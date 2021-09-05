@@ -14,7 +14,7 @@ export interface IReadRecursive {
   path: string
 }
 
-export interface IMethods {
+export interface NextMethods {
   priority?: number
   default?: NextApi;
   get?: NextApi;
@@ -23,9 +23,9 @@ export interface IMethods {
   delete?: NextApi;
 }
 
-export interface IRoute {
+export interface IRouter {
   url: string;
-  exported: IMethods;
+  exported: NextMethods;
 }
 
 export interface IOptions {

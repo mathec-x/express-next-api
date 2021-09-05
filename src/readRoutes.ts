@@ -1,9 +1,9 @@
 import { setBrackets } from './utils';
 import * as pt from 'path';
-import { IReadRecursive, IRoute } from './types';
+import { IReadRecursive, IRouter } from './types';
 
-export const readRoutes = (files: IReadRecursive[]) => {
-  const routes: IRoute[] = []
+export default function readRoutes(files: IReadRecursive[]){
+  const routes: IRouter[] = []
   for (const file of files) {
     const parse = pt.parse(file.relative)
 

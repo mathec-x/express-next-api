@@ -1,13 +1,13 @@
 import path from 'path';
 import { getMethodKey, getHandlers, VerboseLogger } from './utils';
-import { Router } from 'express';
+import { Router, Express } from 'express';
 import { defaultOptions, REQUIRE_MAIN_FILE } from './options';
 import { IOptions } from './types';
-import { readRoutes } from './readRoutes';
+
+import readRoutes from './readRoutes';
 import readRecursive from './readRecursive';
 
-export function readFiles(opts: IOptions = defaultOptions) : Router{
-    const router = Router(opts.options);
+export default function nextRouter(router: Router, opts: IOptions = defaultOptions) : Router|Express {
     
     if (!opts.base) {
       opts.base = ''

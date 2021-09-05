@@ -12,27 +12,23 @@ npm install express-next-api
 ### the promisse of this package
 
 ```js
-module.exports.priority = 1; // sort router organization
 
-/**
- * @type {import("express-next-api").NextApi} // use type of exports as NextApi
- */module.exports.get = async (req, res, next) => { }
-
-/**
- * @type {import("express-next-api").NextApi}
- */module.exports.post = async (req, res, next) => { }
-
-/**
- * @type {import("express-next-api").NextApi}
- */module.exports.put = async (req, res, next) => { }
-
-/**
- * @type {import("express-next-api").NextApi}
- */module.exports.del = async (req, res, next) => { }
-
-/**
- * @type {import("express-next-api").NextApi}
- */module.exports.default = async (req, res, next) => { }
+/**@type {import("express-next-api").NextMethods}*/
+module.exports = {
+    priority: 1, // sort router organization
+    get: (req, res) => {
+        res.json({ params: req.params, url: '/' });
+    },
+    put: (req, res) => {
+        res.json({ params: req.params, url: '/' });
+    },
+    post: (req, res) => {
+        res.json({ params: req.params, url: '/' });
+    },
+    del: (req, res) => {
+        res.json({ params: req.params, url: '/' });
+    }
+}
  
 ```
 
@@ -60,15 +56,17 @@ module.exports.priority = 1; // sort router organization
 - server.js
 
 ```js
-const express = require("express")
-const { nextApi } = require("express-next-api")
+const express = require('express');
+const app = express();
+const { nextApi, nextRouter } = require('express-next-api');
 
-const app = express()
-    
-      app.use('/', nextApi()) // default directory "routes"
-      app.use('/custom', nextApi({ directory: "v2" })) // default directory "v2"
+    app.use( express.json() )
+    app.use('/', nextApi() ) // routes is default directory
+    app.use('/api' , nextApi({ directory: 'api', options: {caseSensitive: false} }))
 
-      app.listen(2000)
+module.exports = nextRouter(app); // routes is default directory
+//or
+module.exports = app;
 ```
 
 ## Custom Options
