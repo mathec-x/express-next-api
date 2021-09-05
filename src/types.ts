@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router, RouterOptions } from 'express';
+import { NextFunction, Request, Response, RouterOptions } from 'express';
 
 export interface INextApiProps<P, B, Qs> {
   req: Request<P, {}, B, Qs>;
@@ -6,7 +6,7 @@ export interface INextApiProps<P, B, Qs> {
   next?: NextFunction;
 }
 
-export type NextApi<Params = {}, Body = {}, Qs = {}> = (req?: Request<Params, {}, Body, Qs>, res?: Response, next?: NextFunction) => Router|void;
+export type NextApi<Params = {}, Body = {}, Qs = {}> = (req?: Request<Params, {}, Body, Qs>, res?: Response, next?: NextFunction) => void;
 
 export interface IReadRecursive {
   name: string
