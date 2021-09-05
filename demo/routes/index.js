@@ -1,9 +1,9 @@
 /**@type {import("../../lib/esm").NextMethods}*/
 module.exports = {
     priority: 1, // sort router organization
-    get: (req, res) => {
+    get: [(req, res) => {
         res.json({ params: req.params, url: '/' });
-    },
+    }],
     put: (req, res) => {
         res.json({ params: req.params, url: '/' });
     },

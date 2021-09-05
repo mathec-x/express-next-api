@@ -16,11 +16,11 @@ export interface IReadRecursive {
 
 export interface NextMethods {
   priority?: number
-  default?: NextApi;
-  get?: NextApi;
-  post?: NextApi;
-  put?: NextApi;
-  delete?: NextApi;
+  default?: NextApi|NextApi[];
+  get?: NextApi|NextApi[];
+  post?: NextApi|NextApi[];
+  put?: NextApi|NextApi[];
+  delete?: NextApi|NextApi[];
 }
 
 export interface IRouter {

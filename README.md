@@ -15,10 +15,12 @@ npm install express-next-api
 
 /**@type {import("express-next-api").NextMethods}*/
 module.exports = {
-    priority: 1, // sort router organization
-    get: (req, res) => {
+    // sort router organization
+    priority: 1, 
+    // usage with middlewares as array
+    get: [withAuth, (req, res) => { 
         res.json({ params: req.params, url: '/' });
-    },
+    }],
     put: (req, res) => {
         res.json({ params: req.params, url: '/' });
     },
@@ -74,19 +76,6 @@ module.exports = app;
 - `directory`: you can change custom directory from default "routes"
 - `verbose`: show routes on console (default process.env.NODE_ENV !== 'production' )
 - `options`: Express RouterOptions { caseSensitive/mergeParams/strict }
-
-### usage with middlewares as array
-
-```js
-const { withAuth } = require("../middlewares")
-
-/**
- * @type {[import("express-next-api").NextApi]}
- */module.exports.get = [
-    withAuth,
-    async (req, res) => { }
-]
-```
 
 ### usage with typescript
 
