@@ -1,6 +1,6 @@
 import path from 'path';
 import { getMethodKey, getHandlers, VerboseLogger } from './utils';
-import { Router, Express } from 'express';
+import type { Router, Express } from 'express';
 import { defaultOptions, REQUIRE_MAIN_FILE } from './options';
 import { IOptions } from './types';
 
