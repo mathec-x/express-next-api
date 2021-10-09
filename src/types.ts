@@ -6,7 +6,7 @@ export interface INextApiProps<P, B, Qs> {
   next?: NextFunction;
 }
 
-export type NextApi<Params = {}, Body = {}, Qs = {}> = (req?: Request<Params, {}, Body, Qs>, res?: Response, next?: NextFunction) => void;
+export type NextApi<Params = {}, Body = {}, Qs = {}> = (req?: Request<Params, {}, Body, Qs>, res?: Response, next?: NextFunction) => any;
 
 export interface IReadRecursive {
   name: string
@@ -14,13 +14,13 @@ export interface IReadRecursive {
   path: string
 }
 
-export interface NextMethods {
-  priority?: number
-  default?: NextApi|NextApi[];
-  get?: NextApi|NextApi[];
-  post?: NextApi|NextApi[];
-  put?: NextApi|NextApi[];
-  delete?: NextApi|NextApi[];
+export interface NextMethods<P = {}, B = {}, Qs = {}> {
+  priority?: number;
+  default?: NextApi<P,B,Qs>|NextApi<P,B,Qs>[];
+  get?: NextApi<P,B,Qs>|NextApi<P,B,Qs>[];
+  post?: NextApi<P,B,Qs>|NextApi<P,B,Qs>[];
+  put?: NextApi<P,B,Qs>|NextApi<P,B,Qs>[];
+  delete?: NextApi<P,B,Qs>|NextApi<P,B,Qs>[];
 }
 
 export interface IRouter {

@@ -8,17 +8,13 @@ import readRoutes from './readRoutes';
 import readRecursive from './readRecursive';
 
 export default function nextRouter(router: Router, opts: IOptions = defaultOptions) : Router|Express {
-    
+
     if (!opts.base) {
-      opts.base = ''
+      opts.base = '/'
     }
    
     if (opts.directory && defaultOptions.directory !== opts.directory) {
       opts.directory = path.join(REQUIRE_MAIN_FILE, opts.directory)
-  
-      if (!opts.base) {
-        opts.base = opts.directory.replace(REQUIRE_MAIN_FILE, '')
-      }
     }
     
     const options = { ...defaultOptions, ...opts }
@@ -34,6 +30,7 @@ export default function nextRouter(router: Router, opts: IOptions = defaultOptio
     }
   
     for (const { url, exported } of routes) {
+      const baseUrl = (options.base+'/'+url).replace(/\/\/+/g, "/");
       const methods = Object.entries(exported)
   
       for (const [method, handler] of methods) {
@@ -45,19 +42,19 @@ export default function nextRouter(router: Router, opts: IOptions = defaultOptio
           !["get","put","post","delete"].includes(methodKey)
         )
           continue
-          
-        router[methodKey](url, ...handlers);
+        
+        router[methodKey](baseUrl, ...handlers);
         if (options.verbose) {
-          VerboseLogger(`[${methodKey}]`, options.base+url, exported.priority)
+          VerboseLogger(methodKey, baseUrl, exported.priority)
         }
       }
   
       if (typeof exported.default !== "undefined") {
         router.all(url, ...getHandlers(exported.default))
         if (options.verbose) {
-          VerboseLogger("[_all]", options.base+url, exported.priority)
-        }
-      }     
+          VerboseLogger("_all", baseUrl, exported.priority)
+        }   
+      }
     }
   
     return router;

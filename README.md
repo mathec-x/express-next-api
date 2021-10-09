@@ -64,11 +64,11 @@ const { nextApi, nextRouter } = require('express-next-api');
 
     app.use( express.json() )
     app.use('/', nextApi() ) // routes is default directory
-    app.use('/api' , nextApi({ directory: 'api', options: {caseSensitive: false} }))
-
-module.exports = nextRouter(app); // routes is default directory
-//or
+    app.use(nextApi({ base: '/api' directory: 'api', options: {caseSensitive: false} }))
+    // {base: '/api'} is like app.use('/api') 
 module.exports = app;
+//or only
+module.exports = nextRouter(app, { base: '/api' }); // routes is default directory
 ```
 
 ## Custom Options

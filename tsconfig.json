@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "target": "esnext",
     "esModuleInterop": true,
-    "target": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "lib/esm",
@@ -11,7 +10,7 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "strict": false,
-    "allowJs": false,
+    "allowJs": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
