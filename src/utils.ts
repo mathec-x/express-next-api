@@ -1,5 +1,5 @@
 export const VerboseLogger = (a: string, b: string, c?: number) => {
-  console.log(`[%s] \r\t %s \r\t\t\t\t\t\t \x1b[36m ${c}\x1b[0m`, a, b)
+  console.log(c, a, `\r\t\t\t\t\t`, `\x1b[36m [${b}] \x1b[0m`);
 }
 
 export const getName = (name: string) => name.startsWith("index.") ? name.replace("index", "") : name === "index" ? "" : name
