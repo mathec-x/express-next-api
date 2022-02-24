@@ -1,6 +1,6 @@
 {
   "name": "express-next-api",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "description": "File routing framework like api serverless for Node Express Next Generation.",
   "author": "Matheus Correa",
   "repository": "mathec-x/express-next-api",
