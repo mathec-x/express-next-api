@@ -6,9 +6,9 @@ import { IOptions } from './types';
 
 import readRoutes from './readRoutes';
 import readRecursive from './readRecursive';
-const logger: { [index: string]: { method: string[], priority: number } } = {};
 
 export default function nextRouter(router: Router, opts: IOptions = defaultOptions): Router | Express {
+  const logger: { [index: string]: { method: string[], priority: number } } = {};
 
   if (!opts.base) {
     opts.base = '/'
